@@ -1,0 +1,33 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    NOTES.txt                                          :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/07/27 16:43:54 by npatron           #+#    #+#              #
+#    Updated: 2024/07/27 19:14:20 by npatron          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+TLS et SSL --> Protocoles qui garantissent une securite dans la communication entre un serveur et un client.
+			   Imaginons, un client qui se connecte sur une page Web, les données seront chiffrées.
+			   Donc si quelqu'un intercepte les données de la communication, celles-ci seraient illisibles.
+			   Seuls le client et le serveur possédant les clés appropriées peuvent déchiffrer et lire les données.
+			   
+
+
+TLS --> Transport Layer Security, protocole de securisation des echanges par reseau
+		informatique.
+		Permet --> - Authentification du serveur et client
+				   - Confidentialite des donnees echangees
+				   - Integrite des donnees echangees
+				   
+SSL --> Protocole qui permet de changer le http en https
+
+---------------------------------------------------------------------------------------------------------------------
+
+Commandes essentielles Docker :
+
+- 
+		
