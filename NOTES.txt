@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 16:43:54 by npatron           #+#    #+#              #
-#    Updated: 2024/07/27 19:14:20 by npatron          ###   ########.fr        #
+#    Updated: 2024/07/29 13:26:44 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,20 @@ SSL --> Protocole qui permet de changer le http en https
 
 ---------------------------------------------------------------------------------------------------------------------
 
-Commandes essentielles Docker :
+openssl req  --> creer des certificats SSL
+-x509 --> Permet d'avoir un certificat auto-signe
+		  au lieu de generer une CSR.
 
-- 
+CSR --> Premiere etape avant d'avoir le certificat, le CSR doit etre signe par une CA afin d'etre valide --> donc encore plus sur
+		mais pas besoin pour le sujet.
+
+-nodes --> Permet d'enlever le mdp a la clef privee, comme ca le conteneur peut se build
+		   sans y renseigner le mdp
+-out --> Endroit ou stocker le certificat
+-keyout --> Endroit ou stocker la key
+-subj --> Permet de renseigner les champs concernant le certificat, sinon openssl
+		  veut qu'on remplisse les champs manuellement avec le terminal, donc
+		  ca empecherait de build le conteneur
+		  
+		
 		
