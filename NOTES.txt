@@ -10,6 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
+Ma version : 27.0.3
+
+---- DOCKER NOTIONS ----
+
+- docker ps --> Liste des conteneurs existants
+- docker run + <image name> --> Execute l'image
+- docker image ls --> Liste les images existantes
+- docker stop <container> --> Stoppe le conteneur
+- docker rm <conteneur> --> Supprime le container
+
+// DOCKER COMPOSE
+
+- docker -v ---> Donne la version de Docker que l'on utilise afin de savoir quelle verison de Docker Compose utiliser.
+
+
 TLS et SSL --> Protocoles qui garantissent une securite dans la communication entre un serveur et un client.
 			   Imaginons, un client qui se connecte sur une page Web, les données seront chiffrées.
 			   Donc si quelqu'un intercepte les données de la communication, celles-ci seraient illisibles.
