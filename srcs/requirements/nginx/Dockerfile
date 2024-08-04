@@ -16,16 +16,15 @@ RUN		echo "NGINX CONTAINER: Installation of nginx + openssl"
 RUN		apt-get update;
 RUN 	apt-get install nginx -y;
 RUN 	apt-get install openssl;
-
 RUN 	mkdir -p /etc/nginx/ssl && \
 		mkdir -p /var/run/nginx
+		
+RUN		echo "NGINX CONTAINER: Creation of your certificate SSL to /etc/nginx/ssl/inception.crt" && \
+		openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=Alpes-Maritimes/L=Nice/O=42/OU=42/CN=npatron.42.fr/UID=login"
 
-RUN		echo "NGINX CONTAINER: Creation of your certificate SSL to /etc/nginx/ssl/inception.crt"
-
-RUN		openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt \
-		-keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=Alpes-Maritimes/L=Nice/O=42/OU=42/CN=npatron.42.fr/UID=login"
 
 RUN		chmod 755 /var/www/html
+
 RUN		mv /var/www/html/index.nginx-debian.html /var/www/html/index_de_base_nginx.html
 RUN 	chown -R www-data:www-data /var/www/html
 

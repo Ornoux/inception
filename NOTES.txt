@@ -57,5 +57,16 @@ CSR --> Premiere etape avant d'avoir le certificat, le CSR doit etre signe par u
 		  veut qu'on remplisse les champs manuellement avec le terminal, donc
 		  ca empecherait de build le conteneur
 		  
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+MariaDB --> Base de donnee edite sous licence GPL (General public license = opensource et libre)
+MySQL et MariaDB sont similaires --> MySQL a ete rachete par Oracle, donc ils ont decide
+									 de creer une version Opensource, au cas ou MySQL ne devenait plus
+									 os.
+
+
 		
 		
