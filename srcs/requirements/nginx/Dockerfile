@@ -28,7 +28,6 @@ RUN		chmod 755 /var/www/html
 RUN		mv /var/www/html/index.nginx-debian.html /var/www/html/index_de_base_nginx.html
 RUN 	chown -R www-data:www-data /var/www/html
 
-# RUN		sed -i "s/net.ipv4.ip_unprivileged_port_start=1024/net.ipv4.ip_unprivileged_port_start=443/" /etc/sysctl.conf
 COPY	html/page.html /var/www/html/page.html
 COPY	conf/nginx.conf /etc/nginx/nginx.conf
 

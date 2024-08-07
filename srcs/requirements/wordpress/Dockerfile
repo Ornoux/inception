@@ -11,7 +11,6 @@
 # **************************************************************************** #
 
 FROM debian:buster
-
 RUN echo "WordPress CONTAINER : Installation of new packages..."
 RUN apt-get update -y && apt-get upgrade -y
 
@@ -34,6 +33,7 @@ RUN	chown -R root:root /var/www/wordpress
 RUN mkdir -p /etc/conf/
 
 COPY /conf/config_wp.sh /etc/conf/
+COPY /conf/php.conf /etc/php/7.3/fpm/pool.d/www.conf
 RUN chmod +x /etc/conf/config_wp.sh
-RUN /bin/bash /etc/conf/config_wp.sh
 
+RUN /bin/bash /etc/conf/config_wp.sh

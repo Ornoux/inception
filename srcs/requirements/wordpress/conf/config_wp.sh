@@ -15,8 +15,7 @@
 echo "clear_env = no" >> /etc/php/7.3/fpm/pool.d/www.conf
 sed -i 's#listen = /run/php/php7.3-fpm.sock#listen=wordpress:9000#' \ 
         /etc/php/7.3/fpm/pool.d/www.conf
-
 sed -i "s/define( 'DB_NAME', 'votre_nom_de_bdd' );/define( 'DB_NAME', '$DB_NAME' );/" /var/www/wordpress/wp-config-sample.php
 sed -i "s/define( 'DB_USER', 'votre_utilisateur_de_bdd' );/define( 'DB_USER', '$DB_USER' );/" /var/www/wordpress/wp-config-sample.php
 sed -i "s/define( 'DB_PASSWORD', 'votre_mdp_de_bdd' );/define( 'DB_PASSWORD', '$DB_PASSWORD' );/" /var/www/wordpress/wp-config-sample.php
-
+sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$DB_NAME:3306' );/" /var/www/wordpress/wp-config-sample.php
