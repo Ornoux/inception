@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 17:32:40 by npatron           #+#    #+#              #
-#    Updated: 2024/07/29 15:32:45 by npatron          ###   ########.fr        #
+#    Updated: 2024/08/07 15:16:23 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,28 +25,15 @@ RUN apt-get install -y \
     php-mysql \
     mariadb-client
 
-RUN mkdir -p /etc/conf/
-RUN echo "WordPress CONTAINER : Using of wget to download WordPress"
-RUN wget  https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www
-
+RUN wget https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz -P /var/www
 RUN cd /var/www && tar -xzf wordpress-6.0-fr_FR.tar.gz \ 
     && rm wordpress-6.0-fr_FR.tar.gz
 
-RUN echo "WordPress CONTAINER : Modifying PHP config file..."
-
-RUN echo "clear_env = no" >> /etc/php/7.3/fpm/pool.d/www.conf
-RUN sed -i 's#listen = /run/php/php7.3-fpm.sock#listen=wordpress:9000#' /etc/php/7.3/fpm/pool.d/www.conf
-
+RUN mkdir -p /var/www/wordpress
 RUN	chown -R root:root /var/www/wordpress
+RUN mkdir -p /etc/conf/
 
-RUN echo "WordPress CONTAINER : Installing CLI..."
-RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-
-RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
-COPY /conf/config_wp.sh /etc/conf/config_wp.sh
-RUN chmod 777 /etc/conf/config_wp.sh
-
-ENTRYPOINT ["/etc/conf/config_wp.sh"]
-
+COPY /conf/config_wp.sh /etc/conf/
+RUN chmod +x /etc/conf/config_wp.sh
+RUN /bin/bash /etc/conf/config_wp.sh
 

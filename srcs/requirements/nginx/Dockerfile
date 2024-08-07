@@ -6,7 +6,7 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 17:32:40 by npatron           #+#    #+#              #
-#    Updated: 2024/07/29 15:32:45 by npatron          ###   ########.fr        #
+#    Updated: 2024/08/07 15:45:11 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ RUN		chmod 755 /var/www/html
 RUN		mv /var/www/html/index.nginx-debian.html /var/www/html/index_de_base_nginx.html
 RUN 	chown -R www-data:www-data /var/www/html
 
+# RUN		sed -i "s/net.ipv4.ip_unprivileged_port_start=1024/net.ipv4.ip_unprivileged_port_start=443/" /etc/sysctl.conf
 COPY	html/page.html /var/www/html/page.html
 COPY	conf/nginx.conf /etc/nginx/nginx.conf
 
