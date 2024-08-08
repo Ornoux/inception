@@ -12,10 +12,19 @@
 
 #!/bin/bash
 
-echo "clear_env = no" >> /etc/php/7.3/fpm/pool.d/www.conf
-sed -i 's#listen = /run/php/php7.3-fpm.sock#listen=wordpress:9000#' \ 
-        /etc/php/7.3/fpm/pool.d/www.conf
-sed -i "s/define( 'DB_NAME', 'votre_nom_de_bdd' );/define( 'DB_NAME', '$DB_NAME' );/" /var/www/wordpress/wp-config-sample.php
-sed -i "s/define( 'DB_USER', 'votre_utilisateur_de_bdd' );/define( 'DB_USER', '$DB_USER' );/" /var/www/wordpress/wp-config-sample.php
-sed -i "s/define( 'DB_PASSWORD', 'votre_mdp_de_bdd' );/define( 'DB_PASSWORD', '$DB_PASSWORD' );/" /var/www/wordpress/wp-config-sample.php
-sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$DB_NAME:3306' );/" /var/www/wordpress/wp-config-sample.php
+cp /var/www/wordpress/wp-config-sample.php /var/www/wordpress/wp-config.php
+
+if [ -n "$DB_NAME" ]; then
+	sed -i "s|define( 'DB_NAME', 'votre_nom_de_bdd' );|define( 'DB_NAME', '$DB_NAME' );|" /var/www/wordpress/wp-config.php
+		if [ -n "$DB_USER" ]; then
+			sed -i "s|define( 'DB_USER', 'votre_utilisateur_de_bdd' );|define( 'DB_USER', '$DB_USER' );|" /var/www/wordpress/wp-config.php
+			if [ -n "$DB_PASSWORD" ]; then
+    			sed -i "s|define( 'DB_PASSWORD', 'votre_mdp_de_bdd' );|define( 'DB_PASSWORD', '$DB_PASSWORD' );|" /var/www/wordpress/wp-config.php
+			fi
+		fi
+fi
+
+sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', 'mariadb:3306' );/" /var/www/wordpress/wp-config.php
+
+wp core install  --debug --force --allow-root --path='/var/www/wordpress' --allow-root --url=https://npatron.42.fr --title=MonWordpress --admin_user=$WP_ADMINUSER --admin_password=$WP_ADMINPASSWORD --admin_email=$WP_ADMINEMAIL
+wp user create   --debug --force --allow-root $WP_USER $WP_EMAIL --role=$WP_ROLE --user_pass=$WP_PASSWORD --first_name="Ornax" --last_name="Valorant"

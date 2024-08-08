@@ -12,11 +12,9 @@
 
 FROM debian:buster
 
-ENV DB_ROOT_PASSWORD=rootpassword
-ENV DB_NAME=mydatabase
-ENV DB_USER=myuser
-ENV DB_PASSWORD=mypassword
-ENV DOMAIN=npatron.42.fr
+ENV DB_NAME=$DB_NAME
+ENV DB_USER=$DB_USER
+ENV DB_PASSWORD=$DB_PASSWORD
 
 RUN echo "MariaDB CONTAINER : Checking new packages available..."
 RUN apt-get update -y && apt-get upgrade -y
@@ -37,4 +35,4 @@ COPY /sh/init_db.sh /etc/sh/init_db.sh
 
 RUN chmod +x /etc/sh/init_db.sh
 
-# CMD ["sh", "/etc/sh/init_db.sh"]
+CMD ["sh", "/etc/sh/init_db.sh"]
