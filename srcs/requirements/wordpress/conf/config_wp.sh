@@ -26,5 +26,5 @@ fi
 
 sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', 'mariadb:3306' );/" /var/www/wordpress/wp-config.php
 
-wp core install  --debug --force --allow-root --path='/var/www/wordpress' --allow-root --url=https://npatron.42.fr --title=MonWordpress --admin_user=$WP_ADMINUSER --admin_password=$WP_ADMINPASSWORD --admin_email=$WP_ADMINEMAIL
-wp user create   --debug --force --allow-root $WP_USER $WP_EMAIL --role=$WP_ROLE --user_pass=$WP_PASSWORD --first_name="Ornax" --last_name="Valorant"
+# wp core install    --allow-root --path='/var/www/wordpress' --url=https://localhost/index.php --title=MonWordpress --admin_user=$WP_ADMINUSER --admin_password=$WP_ADMINPASSWORD --admin_email=$WP_ADMINEMAIL
+# wp user create    --force --allow-root $WP_USER $WP_EMAIL --role=$WP_ROLE --user_pass=$WP_PASSWORD --first_name="Ornax" --last_name="Valorant"
