@@ -6,21 +6,21 @@
 #    By: npatron <npatron@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/27 17:32:40 by npatron           #+#    #+#              #
-#    Updated: 2024/08/07 15:45:11 by npatron          ###   ########.fr        #
+#    Updated: 2024/08/12 22:34:02 by npatron          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FROM	debian:buster
 
 RUN		echo "NGINX CONTAINER: Installation of nginx + openssl"
-RUN		apt-get update;
+RUN		apt-get update -y && apt-get upgrade -y;
 RUN 	apt-get install nginx -y;
 RUN 	apt-get install openssl;
 RUN 	mkdir -p /etc/nginx/ssl && \
 		mkdir -p /var/run/nginx
 		
 RUN		echo "NGINX CONTAINER: Creation of your certificate SSL to /etc/nginx/ssl/inception.crt" && \
-		openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=Alpes-Maritimes/L=Nice/O=42/OU=42/CN=npatron.42.fr/UID=login"
+		openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=Alpes-Maritimes/L=Nice/O=42/OU=42/CN=npatron.42.fr/UID=npatron"
 
 
 RUN		chmod 755 /var/www/html

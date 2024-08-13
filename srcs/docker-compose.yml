@@ -26,7 +26,7 @@ services:
         depends_on:
             - wordpress
         volumes:
-            - wordpress:/var/www/html
+            - wordpress:/var/www/wordpress
 
     wordpress:
         container_name: wordpress
@@ -50,12 +50,12 @@ services:
             WP_ADMINEMAIL: ${WP_ADMINEMAIL}
             WP_ADMINPASSWORD: ${WP_ADMINPASSWORD}
             WP_ADMINUSER: ${WP_ADMINUSER}
-            WP_ROLE: ${WP_ROLE}
+            DOMAIN: ${DOMAIN}
         depends_on:
             - mariadb
         restart: on-failure
         volumes:
-            - wordpress:/var/www/html
+            - wordpress:/var/www/wordpress
 
 networks:
     mynetwork:
