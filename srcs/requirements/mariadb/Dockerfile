@@ -12,10 +12,6 @@
 
 FROM debian:buster
 
-ENV DB_NAME=$DB_NAME
-ENV DB_USER=$DB_USER
-ENV DB_PASSWORD=$DB_PASSWORD
-
 RUN echo "MariaDB CONTAINER : Checking new packages available..."
 RUN apt-get update -y && apt-get upgrade -y
 
@@ -27,8 +23,6 @@ RUN mkdir -p /etc/sh/
 RUN mkdir -p /var/run/mysqld
 
 RUN chown mysql:mysql /var/run/mysqld
-
-
 
 COPY /conf/mariadb.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY /sh/init_db.sh /etc/sh/init_db.sh
